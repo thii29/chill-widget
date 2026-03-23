@@ -2,5 +2,53 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Fonts */
   --font-mono: 'DotGothic16', monospace;
+
+  /* Colors */
+  /* ── Violet / Purple (dark → light) ──────────── */
+  --color-violet-900:  #2f2556;
+  --color-violet-700:  #584c84;
+  --color-violet-500:  #827caf;
+  --color-violet-300:  #aeabd3;
+  --color-violet-100:  #cecff0;
+
+  /* ── Teal 2 / Seafoam (dark → light) ─────────── */
+  --color-seafoam-800:  #257d9b;
+  --color-seafoam-600:  #34ada1;
+  --color-seafoam-400:  #78d8b7;
+  --color-seafoam-200:  #c9ffbf;
+  --color-seafoam-50:   #ffffff;
+
+  /* ── Cyan / Sage ──────────────────────────────── */
+  --color-cyan-600:   #25bcc6;
+  --color-cyan-200:   #a0fff0;
+  --color-sage-500:   #84a594;
+  --color-sage-200:   #cfd3af;
+  --color-sage-50:    #fff2d1;
+
+  /* ── Peach / Coral / Red ──────────────────────── */
+  --color-peach-200:  #ffd9ae;
+  --color-peach-400:  #ffa582;
+  --color-coral-400:  #ff807e;
+  --color-coral-600:  #ff5470;
+  --color-coral-800:  #985868;
+
+  /* ── Rose / Periwinkle / Sky ──────────────────── */
+  --color-rose-400:        #b78482;
+  --color-rose-200:        #dda49f;
+  --color-rose-100:        #e0bdc1;
+  --color-periwinkle-500:  #7789ef;
+  --color-sky-400:         #5ec1ff;
+
+  /* ── Lavender / Purple 2 / Pink ──────────────── */
+  --color-lavender-200:  #bae6ff;
+  --color-lavender-300:  #e2d3ff;
+  --color-lavender-400:  #be9bff;
+  --color-purple-600:    #9968e2;
+  --color-hotpink-400:   #ff9bb6;
+
+  /* ── Blush / Soft Pink ────────────────────────── */
+  --color-blush-200:  #ffccdc;
+  --color-blush-100:  #ffeaf6;
 }
