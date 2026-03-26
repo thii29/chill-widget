@@ -6,10 +6,10 @@ import Start from '../assets/icons/start';
 
 const Pomodoro = () => {
   const isBreakTime: boolean = false;
-  const isPause: boolean = false;
+  const isPause: boolean = true;
   const isOpenSetting: boolean = false;
   return (
-    <div className="flex flex-col gap-5 justify-center rounded-2xl px-8 py-6 bg-linear-150 from-peach-200 to-peach-400">
+    <div className="flex flex-col gap-5 justify-center rounded-2xl px-8 py-6 bg-white">
       <div className="flex justify-between items-center  text-xl font-mono">
         {isBreakTime ? (
           <div className="flex items-center gap-2">
@@ -30,13 +30,13 @@ const Pomodoro = () => {
       <div className="flex gap-6 justify-center items-center">
         <button>
           {isPause ? (
-            <Pause width="36" height="36" />
+            <Pause width="48" height="48" />
           ) : (
             <Start width="48" height="48" />
           )}
         </button>
         <button>
-          <Reset width="36" height="36" />
+          <Reset width="48" height="48" />
         </button>
       </div>
     </div>
