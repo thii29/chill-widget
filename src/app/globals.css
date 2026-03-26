@@ -5,7 +5,6 @@
   /* Fonts */
   --font-mono: 'DotGothic16', monospace;
 
-
   /* ── Teal 2 / Seafoam (dark → light) ─────────── */
   --color-seafoam-800:  #257d9b;
   --color-seafoam-600:  #34ada1;
@@ -18,7 +17,7 @@
   --color-peach-400:  #ffa582;
   --color-coral-400:  #ff807e;
   --color-coral-600:  #ff5470;
-  --color-coral-800:  #985868;
+  
 
   /* ── Rose / Periwinkle / Sky ──────────────────── */
   --color-rose-400:        #b78482;
