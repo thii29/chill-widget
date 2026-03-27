@@ -8,10 +8,10 @@ import Start from '../assets/icons/start';
 import Setting from './setting';
 
 const Pomodoro = () => {
-  let isBreakTime: boolean = false;
-  let isPause: boolean = true;
+  const isBreakTime: boolean = false;
+  const isPause: boolean = false;
 
-  const [isOpenSetting, setIsOpenSetting] = useState(false);
+  const [isOpenSetting, setIsOpenSetting] = useState(true);
   const handleOpenSetting = () => {
     setIsOpenSetting(true);
   };
@@ -20,7 +20,7 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 justify-center rounded-2xl px-8 py-6 bg-white">
+    <div className="flex flex-col gap-5 justify-center rounded-2xl px-8 py-6 bg-deep-slate  text-frost-blue">
       <div className="flex justify-between items-center  text-xl font-mono">
         {isBreakTime ? (
           <div className="flex items-center gap-2">
@@ -33,20 +33,25 @@ const Pomodoro = () => {
             Pomodoro
           </div>
         )}
-        <button onClick={handleOpenSetting}>Setting</button>
+        <button
+          onClick={handleOpenSetting}
+          className="w-fit px-4 py-2 rounded-xl cursor-pointer hover:bg-frost-blue hover:text-deep-slate"
+        >
+          Setting
+        </button>
       </div>
       <span className="flex items-center justify-center px-10 py-6 border rounded-xl text-9xl font-mono font-semibold">
         25:00
       </span>
       <div className="flex gap-6 justify-center items-center">
-        <button>
+        <button className="cursor-pointer">
           {isPause ? (
             <Pause width="48" height="48" />
           ) : (
             <Start width="48" height="48" />
           )}
         </button>
-        <button>
+        <button className="cursor-pointer">
           <Reset width="48" height="48" />
         </button>
       </div>
