@@ -1,39 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 @import 'tailwindcss';
+@plugin 'daisyui' {
+  include: toggle, btn;
+}
 
 @theme {
   /* Fonts */
   --font-mono: 'DotGothic16', monospace;
-
-  /* ── Teal 2 / Seafoam (dark → light) ─────────── */
-  --color-seafoam-800:  #257d9b;
-  --color-seafoam-600:  #34ada1;
-  --color-seafoam-400:  #78d8b7;
-  --color-seafoam-200:  #c9ffbf;
-  --color-seafoam-50:   #ffffff;
-
-  /* ── Peach / Coral / Red ──────────────────────── */
-  --color-peach-200:  #ffd9ae;
-  --color-peach-400:  #ffa582;
-  --color-coral-400:  #ff807e;
-  --color-coral-600:  #ff5470;
-  
-
-  /* ── Rose / Periwinkle / Sky ──────────────────── */
-  --color-rose-400:        #b78482;
-  --color-rose-200:        #dda49f;
-  --color-rose-100:        #e0bdc1;
-  --color-periwinkle-500:  #7789ef;
-  --color-sky-400:         #5ec1ff;
-
-  /* ── Lavender / Purple 2 / Pink ──────────────── */
-  --color-lavender-200:  #bae6ff;
-  --color-lavender-300:  #e2d3ff;
-  --color-lavender-400:  #be9bff;
-  --color-purple-600:    #9968e2;
-  --color-hotpink-400:   #ff9bb6;
-
-  /* ── Blush / Soft Pink ────────────────────────── */
-  --color-blush-200:  #ffccdc;
-  --color-blush-100:  #ffeaf6;
+  --font-sans: 'Reddit Sans', sans-serif;
+  /* Colors */
+  --color-midnight: #070810;
+  --color-deep-ocean: #18284a;
+  --color-glacier-blue: #52a5de;
+  --color-frost-blue: #acd6f6;
+  --color-ice-white: #ebf9ff;
+  --color-deep-slate: #2e364d;
+  --color-mute-steel: #425d87;
+  --color-soft-periwinkle: #7d95de;
+  --color-pale-laveder: #ddc8f9;
+  --color-mint-white: #fbfef9;
 }
