@@ -11,7 +11,7 @@ const Pomodoro = () => {
   const isBreakTime: boolean = false;
   const isPause: boolean = false;
 
-  const [isOpenSetting, setIsOpenSetting] = useState(true);
+  const [isOpenSetting, setIsOpenSetting] = useState(false);
   const handleOpenSetting = () => {
     setIsOpenSetting(true);
   };
@@ -44,14 +44,14 @@ const Pomodoro = () => {
         25:00
       </span>
       <div className="flex gap-6 justify-center items-center">
-        <button className="cursor-pointer">
+        <button className="cursor-pointer transition delay-200 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
           {isPause ? (
             <Pause width="48" height="48" />
           ) : (
             <Start width="48" height="48" />
           )}
         </button>
-        <button className="cursor-pointer">
+        <button className="cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
           <Reset width="48" height="48" />
         </button>
       </div>
