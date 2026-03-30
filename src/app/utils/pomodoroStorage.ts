@@ -3,7 +3,7 @@ import { PomodoroSettings, STORAGE } from '../models/widgetType';
 export const DEFAULT_SETTING: PomodoroSettings = {
   pomodoro: 25,
   shortBreak: 5,
-  longBreak: 25,
+  longBreak: 15,
   longBreakInterval: 4,
   autoStartBreak: false,
   autoStartFocus: false,
@@ -40,3 +40,4 @@ export const saveSettings = (settings: PomodoroSettings): void => {
     }),
   );
 };
+

@@ -1,17 +1,26 @@
+'use client'
 import { useState } from 'react';
 import Close from '../assets/icons/close';
+import { PomodoroSettings} from '../app/models/widgetType';
 
 type Props = {
   isOpen: boolean;
+  settings: PomodoroSettings;
   onClose: () => void;
+  onSave: (s: PomodoroSettings) => void;
 };
 
-const Setting = ({ isOpen, onClose }: Props) => {
+const Setting = ({ isOpen, onClose, settings, onSave }: Props) => {
   if (!isOpen) return null;
-  const [pomodoro, setPomodoro] = useState<number>(25);
-  const [shortBreak, setShortBreak] = useState<number>(5);
-  const [longBreak, setLongBreak] = useState<number>(15);
-  const [longBreakInterval, setLongBreakInterval] = useState<number>(4);
+  const [draft, setDraft] = useState<PomodoroSettings>(settings);
+
+  const set = (key: keyof PomodoroSettings, value: number | boolean) =>
+    setDraft((prev) => ({ ...prev, [key]: value }));
+
+  const handleSave = () => {
+    onSave(draft);
+    onClose();
+  };
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center font-sans">
       <div className="w-2xl flex flex-col gap-2.5 px-6 py-4 rounded-xl bg-deep-slate text-mint-white">
@@ -31,8 +40,9 @@ const Setting = ({ isOpen, onClose }: Props) => {
             <input
               type="number"
               name="pomodoro"
-              value={pomodoro}
-              id=""
+              min={10}
+              value={draft?.pomodoro}
+              onChange={(e) => set('pomodoro', Number(e.target.value))}
               className="border rounded-md px-3 py-1.5"
             />
           </div>
@@ -41,8 +51,9 @@ const Setting = ({ isOpen, onClose }: Props) => {
             <input
               type="number"
               name="short-break"
-              value={shortBreak}
-              id=""
+              min={5}
+              value={draft?.shortBreak}
+              onChange={(e) => set('shortBreak', Number(e.target.value))}
               className="border rounded-md  px-3 py-1.5"
             />
           </div>
@@ -53,8 +64,9 @@ const Setting = ({ isOpen, onClose }: Props) => {
             <input
               type="number"
               name="long-break"
-              value={longBreak}
-              id=""
+              min={10}
+              value={draft?.longBreak}
+              onChange={(e) => set('longBreak', Number(e.target.value))}
               className="border rounded-md  px-3 py-1.5"
             />
           </div>
@@ -63,42 +75,39 @@ const Setting = ({ isOpen, onClose }: Props) => {
             <input
               type="number"
               name="long-break-interval"
-              value={longBreakInterval}
-              id=""
+              min={2}
+              value={draft?.longBreakInterval}
+              onChange={(e) => set('longBreakInterval', Number(e.target.value))}
               className="border rounded-md  px-3 py-1.5"
             />
           </div>
         </div>
         {/* Custom options */}
         <div className="flex flex-col gap-3.5">
-          <div className="w-full flex justify-between items-center">
-            <span>Auto-start Breaks</span>
-            <input
-              type="checkbox"
-              defaultChecked
-              className="toggle toggle-lg border border-ice-white text-ice-white checked:text-soft-periwinkle checked:bg-mint-white checked:border-mint-white"
-            />
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <span>Auto-start Focus</span>
-            <input
-              type="checkbox"
-              defaultChecked
-              className="toggle toggle-lg border border-ice-white text-ice-white checked:text-soft-periwinkle checked:bg-mint-white checked:border-mint-white"
-            />
-          </div>
-          <div className="w-full flex justify-between items-center">
-            <span>Auto-resume Cycle</span>
-            <input
-              type="checkbox"
-              defaultChecked
-              className="toggle toggle-lg border border-ice-white text-ice-white checked:text-soft-periwinkle checked:bg-mint-white checked:border-mint-white"
-            />
-          </div>
+          {(
+            [
+              ['autoStartBreak', 'Auto-start Break'],
+              ['autoStartFocus', 'Auto-start Focus'],
+              ['autoResumeCycle', 'Auto-resume Cycle'],
+            ] as const
+          ).map(([key, label]) => (
+            <div key={key} className="w-full flex justify-between items-center">
+              <span>{label}</span>
+              <input
+                type="checkbox"
+                checked={draft[key]}
+                onChange={(e) => set(key, e.target.checked)}
+                className="toggle toggle-lg border border-ice-white text-ice-white checked:text-soft-periwinkle checked:bg-mint-white checked:border-mint-white"
+              />
+            </div>
+          ))}
         </div>
         {/* Save change btn */}
         <div className="flex justify-end mt-2 p-2">
-          <button className="w-fit cursor-pointer px-3 py-2 rounded-md hover:bg-mint-white hover:text-deep-slate">
+          <button
+            onClick={handleSave}
+            className="w-fit cursor-pointer px-3 py-2 rounded-md hover:bg-mint-white hover:text-deep-slate"
+          >
             Save change
           </button>
         </div>

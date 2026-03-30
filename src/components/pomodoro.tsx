@@ -6,17 +6,23 @@ import Pause from '../assets/icons/pause';
 import Reset from '../assets/icons/reset';
 import Start from '../assets/icons/start';
 import Setting from './setting';
+import { usePomodoro } from '../app/hooks/usePomodoro';
 
 const Pomodoro = () => {
-  const isBreakTime: boolean = false;
-  const isPause: boolean = false;
+  const {
+    timeDisplay,
+    isRunning,
+    isBreakTime,
+    settings,
+    start,
+    pause,
+    reset,
+    updateSettings,
+  } = usePomodoro();
 
   const [isOpenSetting, setIsOpenSetting] = useState(false);
   const handleOpenSetting = () => {
     setIsOpenSetting(true);
-  };
-  const handleCloseSetting = () => {
-    setIsOpenSetting(false);
   };
 
   return (
@@ -41,21 +47,32 @@ const Pomodoro = () => {
         </button>
       </div>
       <span className="flex items-center justify-center px-10 py-6 border rounded-xl text-9xl font-mono font-semibold">
-        25:00
+        {timeDisplay}
       </span>
       <div className="flex gap-6 justify-center items-center">
-        <button className="cursor-pointer transition delay-200 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
-          {isPause ? (
+        <button
+          onClick={isRunning ? pause : start}
+          className="cursor-pointer transition delay-200 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+        >
+          {isRunning ? (
             <Pause width="48" height="48" />
           ) : (
             <Start width="48" height="48" />
           )}
         </button>
-        <button className="cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
+        <button
+          onClick={reset}
+          className="cursor-pointer transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+        >
           <Reset width="48" height="48" />
         </button>
       </div>
-      <Setting isOpen={isOpenSetting} onClose={handleCloseSetting} />
+      <Setting
+        isOpen={isOpenSetting}
+        settings={settings}
+        onClose={() => setIsOpenSetting(false)}
+        onSave={updateSettings}
+      />
     </div>
   );
 };
